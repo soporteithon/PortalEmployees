@@ -3,12 +3,9 @@ import { useQuery } from '@tanstack/react-query';
 import {
     TrendingUp,
 
-    User,
-    Briefcase,
-
     AlertCircle,
     ArrowUpRight,
-    Download,
+
     PieChart,
     Lock,
     Eye,
@@ -30,6 +27,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { SearchBar } from '@/components/SideBar/Sidebar';
+import { HeaderIngresos } from '../components/headerIngresos';
 
 // Formateador de moneda para HNL
 const formatHNL = (value: number) => {
@@ -76,7 +74,7 @@ export const Ingresos = () => {
                                 <Lock className="w-10 h-10 text-red-700 animate-bounce" />
                             </div>
                             <div className="space-y-3">
-                                <h2 className="text-3xl font-black text-slate-800 tracking-tight">Acceso Protegido</h2>
+                                <h2 className="text-3xl font-black text-slate-800 tracking-tight">Información Protegida</h2>
                                 <p className="text-slate-500 font-medium leading-relaxed">
                                     Tus datos de ingresos son confidenciales. Haz clic para desbloquear la vista.
                                 </p>
@@ -85,7 +83,7 @@ export const Ingresos = () => {
                                 onClick={() => setShowData(true)}
                                 className="w-full bg-red-900 hover:bg-red-800 text-white font-bold py-8 rounded-3xl shadow-xl shadow-red-900/20 transition-all hover:scale-[1.03] active:scale-95 text-lg"
                             >
-                                <TrendingUp className="w-5 h-5 mr-3" /> Ver Información
+                                <TrendingUp className="w-5 h-5 mr-3" /> Visualizar Información
                             </Button>
                         </Card>
                     </div>
@@ -93,39 +91,7 @@ export const Ingresos = () => {
 
                 <div className={!showData ? 'filter blur-2xl grayscale pointer-events-none transition-all duration-700 scale-95 opacity-50' : 'transition-all duration-700 scale-100 opacity-100'}>
                     {/* Header Corporativo */}
-                    <header className="relative rounded-[2rem] overflow-hidden bg-linear-to-br from-red-950 via-red-900 to-slate-900 p-8 shadow-2xl mb-8">
-                        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
-                        <div className="relative flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-                            <div className="space-y-2">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/10 text-red-200 text-xs font-bold tracking-widest uppercase">
-                                    <TrendingUp className="w-3 h-3" /> Historial de Ingresos
-                                </div>
-                                <h1 className="text-3xl md:text-4xl font-black text-white tracking-tight">
-                                    Mis ingresos mensual
-                                </h1>
-                                <div className="flex flex-wrap gap-3">
-                                    <span className="flex items-center gap-2 text-white text-sm font-medium">
-                                        <Briefcase className="w-4 h-4" /> {empleado?.puesto}
-                                    </span>
-                                    <span className="flex items-center gap-2 text-white text-sm font-medium border-l border-white/20 pl-3">
-                                        <User className="w-4 h-4" /> COD: {empleado?.codigo}
-                                    </span>
-                                </div>
-                            </div>
-                            <div className="flex gap-3">
-                                <Button className="bg-white text-red-900 hover:bg-red-50 font-bold px-6 py-6 rounded-2xl shadow-xl transition-all">
-                                    <Download className="w-4 h-4 mr-2" /> PDF
-                                </Button>
-                                <Button
-                                    variant="outline"
-                                    onClick={() => setShowData(false)}
-                                    className="bg-transparent border-white/20 text-white hover:bg-white/10 font-bold px-6 py-6 rounded-2xl transition-all"
-                                >
-                                    <Lock className="w-4 h-4 mr-2" /> Ocultar
-                                </Button>
-                            </div>
-                        </div>
-                    </header>
+                    <HeaderIngresos empleado={empleado} onHide={() => setShowData(false)} />
 
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         {/* Tarjeta Salario Actual (Más pequeña y privada) */}
@@ -164,8 +130,8 @@ export const Ingresos = () => {
                                     Evolución Salarial
                                 </h3>
                             </div>
-                            <div className="h-[250px] w-full">
-                                <ResponsiveContainer width="100%" height="100%">
+                            <div className="h-[250px] w-full relative">
+                                <ResponsiveContainer width="100%" height={250} minWidth={0} debounce={50}>
                                     <AreaChart data={historial}>
                                         <defs>
                                             <linearGradient id="colorSalario" x1="0" y1="0" x2="0" y2="1">

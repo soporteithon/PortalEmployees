@@ -8,7 +8,7 @@ export class IngresosService {
   constructor(
     @InjectDataSource()
     private readonly dataSource: DataSource,
-  ) {}
+  ) { }
 
   async getHistorico(user: User) {
     try {

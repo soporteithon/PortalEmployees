@@ -7,7 +7,7 @@ import { Inicio } from './catalogo/pages/menu-page/navBar-menu-pages/inicio/inic
 import { Portal } from './catalogo/pages/menu-page/navBar-menu-pages/portal/portal';
 
 import { Nominas } from './catalogo/pages/menu-page/navBar-menu-pages/nominas/nominas';
-import { Ingresos } from './catalogo/pages/menu-page/menu-inicio-pages/ingresos/ingresos';
+
 import Expedientes from './catalogo/pages/menu-page/navBar-menu-pages/expedientes/expedientes';
 import AuthLayout from './auth/layouts/AuthLayouts';
 import AdminLayout from './admin/layouts/AdminLayout';
@@ -18,6 +18,7 @@ import { AdminUsersPage } from './admin/pages/users/AdminUsersPage';
 import { AdminUserPage } from './admin/pages/users/AdminUserPage';
 import { MiCuenta } from './catalogo/pages/miCuenta/miCuenta';
 import { AdminRoute, AuthenticatedRoute, NotAuthenticatedRoute } from './components/routes/ProtectedRoutes';
+import { Ingresos } from './catalogo/pages/menu-page/menu-inicio-pages/ingresos/ingresos';
 
 export const appRouter = createBrowserRouter([
     // 🔹 raíz → login

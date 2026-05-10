@@ -15,6 +15,7 @@ import { Separator } from "@/components/ui/separator";
 
 export const FooterComponent = () => {
     return (
+
         <footer className="mt-12">
             {/* Footer principal */}
             <Card className="overflow-hidden border-red-100 shadow-xl shadow-red-900/5 rounded-3xl">
