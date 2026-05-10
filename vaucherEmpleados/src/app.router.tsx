@@ -19,6 +19,7 @@ import { AdminUserPage } from './admin/pages/users/AdminUserPage';
 import { MiCuenta } from './catalogo/pages/miCuenta/miCuenta';
 import { AdminRoute, AuthenticatedRoute, NotAuthenticatedRoute } from './components/routes/ProtectedRoutes';
 import { Ingresos } from './catalogo/pages/menu-page/menu-inicio-pages/ingresos/ingresos';
+import { Reportes } from './catalogo/pages/menu-page/navBar-menu-pages/reportes/reportes';
 
 export const appRouter = createBrowserRouter([
     // 🔹 raíz → login
@@ -115,6 +116,10 @@ export const appRouter = createBrowserRouter([
             {
                 path: 'ingresos',
                 element: <Ingresos />,
+            },
+            {
+                path: 'reportes',
+                element: <Reportes />,
             },
         ],
     },
