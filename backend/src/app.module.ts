@@ -7,6 +7,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 
 import { CommonModule } from './common/common.module';
 import { AuthModule } from './auth/auth.module';
+import { IngresosModule } from './ingresos/ingresos.module';
 
 @Module({
   imports: [
@@ -42,7 +43,7 @@ import { AuthModule } from './auth/auth.module';
     CommonModule,
 
     AuthModule,
-
+    IngresosModule,
   ],
 })
 export class AppModule { }

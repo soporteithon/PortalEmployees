@@ -12,11 +12,11 @@ export const SearchBar = () => {
     ];
 
     return (
-        <aside className="w-72 bg-white border-r border-gray-100 p-8 hidden lg:flex flex-col shadow-[1px_0_10px_rgba(0,0,0,0.02)] h-screen sticky top-0">
-            
+        <aside className="w-72 bg-white border-r border-red-100 p-8 hidden lg:flex flex-col shadow-[1px_0_10px_rgba(0,0,0,0.02)] h-screen sticky top-0">
+
             <div className="mb-10">
                 <h1 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6">Búsqueda Inteligente</h1>
-                
+
                 {/* SEARCH HUB */}
                 <div className="relative group">
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-red-600 transition-colors" />

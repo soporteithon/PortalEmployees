@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useAuthStore } from '../store/authStore';
+import { useAuthStore } from '../auth/store/auth.store';
 
 // El backend de NestJS está configurado con prefijo 'api'
 export const api = axios.create({

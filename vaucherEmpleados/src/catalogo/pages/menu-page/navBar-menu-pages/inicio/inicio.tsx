@@ -53,56 +53,63 @@ export const Inicio = () => {
                 <div className="max-w-7xl mx-auto space-y-8">
 
                     {/* Header Premium */}
-                    <div className="relative rounded-2xl overflow-hidden border border-zinc-200 bg-white shadow-sm hover:shadow-md transition-all duration-300">
-                        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-                        <div className="relative p-8 flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-                            <div className="flex items-start gap-5">
+                    <div className="relative rounded-3xl overflow-hidden border border-red-500/20 bg-linear-to-r from-red-950 via-slate-900 to-red-900 shadow-2xl shadow-red-500/10">
+                        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+                        <div className="absolute -top-24 -left-24 w-72 h-72 bg-red-900/20 rounded-full blur-3xl"></div>
+                        <div className="absolute -bottom-20 right-0 w-80 h-80 bg-red-900/10 rounded-full blur-3xl"></div>
+                        <div className="absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-red-900 via-red-200 to-red-900"></div>
 
-
-                                <div className="text-black">
-                                    <h1 className="text-4xl md:text-3xl font-bold mb-2">
-                                        ¡Bienvenido, {formatDisplayName(currentUser?.name || '')}!
-                                    </h1>
-                                    <p className="text-gray-500 text-lg font-medium">
-                                        Este es tu nuevo portal de Finotex
-                                    </p>
-                                    <p className="text-gray-500 text-lg font-medium">
-                                        Aqui encontraras toda tu informacion laboral que necesitas
-                                    </p>
-
-                                    <div className="flex flex-wrap gap-4 mt-4">
-                                        <span className="px-4 py-1.5 rounded-full text-sm border border-zinc-200 bg-zinc-50 shadow-sm font-medium">
-                                            💼 {currentUser?.puesto || 'Puesto no asignado'}
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="text-right">
-
-
-                                <p className="text-gray-700 text-lg capitalize font-semibold">
+                        <div className="absolute top-6 right-6 hidden md:block">
+                            <div className="bg-white/10 backdrop-blur-xl border border-white/10 px-5 py-3 rounded-2xl shadow-lg">
+                                <p className="text-white text-sm font-semibold capitalize">
                                     {fechaActual}
                                 </p>
                             </div>
                         </div>
+
+                        <div className="relative p-5 md:p-6">
+
+
+                            <h1 className="text-2xl md:text-4xl font-bold text-white mt-5 mb-3">
+                                ¡Bienvenido, {formatDisplayName(currentUser?.name || '')}! 👋
+                            </h1>
+
+                            <p className="text-slate-300 text-md max-w-2xl leading-relaxed">
+                                Gestiona tu información laboral de forma segura, rápida y eficiente.
+                            </p>
+
+                            <div className="mt-5 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 border border-white/10 backdrop-blur-md text-white font-medium">
+                                <span className="w-2 h-2 rounded-full bg-green-400"></span>
+                                {currentUser?.puesto || 'Puesto no asignado'}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                        {stats.map((s, idx) => {
+                            const colors = [
+                                'border-blue-200 bg-black-50/30 text-gray-700',
+                                'border-emerald-200 bg-black-50/30 text-gray-700',
+                                'border-amber-200 bg-black-50/30 text-gray-700',
+                                'border-slate-200 bg-black-50/30 text-gray-700'
+                            ];
+                            return (
+                                <div key={s.label} className={`relative bg-white border ${colors[idx]} rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300`}>
+                                    <p className="text-[0.7rem] uppercase tracking-widest font-black opacity-70 mb-3">
+                                        {s.label}
+                                    </p>
+                                    <div className="flex items-baseline gap-1">
+                                        <p className="text-4xl font-black tracking-tighter">
+                                            {s.value}
+                                        </p>
+                                    </div>
+                                    <p className="text-xs font-bold mt-2 opacity-60 flex items-center gap-1">
+                                        <Clock className="w-3 h-3" /> {s.desc}
+                                    </p>
+                                </div>
+                            );
+                        })}
                     </div>
 
-                    {/* Stats Originales con diseño mejorado */}
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                        {stats.map((s) => (
-                            <div key={s.label} className="relative bg-white border border-gray-100 rounded-xl p-4 shadow-sm hover:shadow-md transition-all">
-                                <div className={`absolute top-0 left-0 w-1 h-full ${s.accent} rounded-l-xl`} />
-                                <p className="text-[0.65rem] uppercase tracking-widest font-bold text-gray-500 mb-2">
-                                    {s.label}
-                                </p>
-                                <p className="text-3xl font-bold text-gray-900 mb-1">
-                                    {s.value}
-                                </p>
-                                <p className="text-xs text-gray-500 font-medium">{s.desc}</p>
-                            </div>
-                        ))}
-                    </div>
 
                     <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
                         {/* Columna Módulos (Ocupa 2/3) */}
@@ -167,9 +174,9 @@ export const Inicio = () => {
                                         ))}
                                     </div>
                                 </CardContent>
-                                <div className="p-4 border-t border-gray-100 text-center bg-gray-50/50">
-                                    <Button variant="ghost" className="w-full text-red-700 hover:text-red-800 hover:bg-red-50 font-semibold gap-1">
-                                        Ver todos los avisos <ChevronRight className="w-4 h-4" />
+                                <div className="p-6 bg-slate-50/50 border-t border-slate-100">
+                                    <Button variant="outline" className="w-full border-slate-200 text-slate-600 hover:bg-slate-900 hover:text-white font-bold rounded-xl transition-all duration-300 py-6">
+                                        Centro de Noticias <ChevronRight className="w-4 h-4 ml-2" />
                                     </Button>
                                 </div>
                             </Card>

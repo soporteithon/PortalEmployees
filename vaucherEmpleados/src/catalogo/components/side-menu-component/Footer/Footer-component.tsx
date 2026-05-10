@@ -1,82 +1,189 @@
+import {
+    Building2,
+    Mail,
+    Phone,
+    BookOpen,
+    HelpCircle,
+    ShieldCheck,
+    LifeBuoy,
+    FileText,
+    RefreshCcw,
+} from "lucide-react";
 
+import { Card, CardContent } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 
 export const FooterComponent = () => {
-
-    {/* FOOTER GRANDE */ }
     return (
+        <footer className="mt-12">
+            {/* Footer principal */}
+            <Card className="overflow-hidden border-red-100 shadow-xl shadow-red-900/5 rounded-3xl">
+                <CardContent className="p-0">
+                    {/* Sección superior */}
+                    <div className="relative bg-linear-to-br from-white via-red-50/40 to-white px-8 py-12 lg:px-12">
+                        {/* Glow decorativo */}
+                        <div className="absolute top-0 right-0 w-72 h-72 bg-red-100/40 rounded-full blur-3xl pointer-events-none" />
+                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-red-200/20 rounded-full blur-3xl pointer-events-none" />
 
-        < div className="w-full bg-white" >
-            < footer className="w-full text-gray-800 bg-gray-50 body-font border-t border-gray-500" >
-                <div className="container flex flex-col flex-wrap px-5 py-16 mx-auto md:items-center lg:items-start md:flex-row">
+                        <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-10">
+                            {/* Branding */}
+                            <div className="lg:col-span-4">
+                                <div className="inline-flex items-center gap-3 mb-5">
+                                    <div className="w-12 h-12 rounded-2xl bg-linear-to-br from-red-700 to-red-900 flex items-center justify-center shadow-lg shadow-red-900/20">
+                                        <Building2 className="w-6 h-6 text-white" />
+                                    </div>
 
-                    {/* LOGO + INFO */}
-                    <div className="shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left">
-                        <div className="flex items-center justify-center font-bold text-gray-900 text-2xl md:justify-start">
-                            <svg className="w-8 h-8 mr-2 text-red-800" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2L2 7l10 5 10-5-10-5zm0 8.9l-9-4.5v9l9 4.5 9-4.5v-9l-9 4.5z" />
-                            </svg>
-                            Finotex Employee Portal
+                                    <div>
+                                        <h2 className="text-xl font-bold text-gray-900">
+                                            Finotex Employee Portal
+                                        </h2>
+                                        <p className="text-sm text-red-700 font-medium">
+                                            Plataforma Corporativa
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <p className="text-sm leading-7 text-gray-600 max-w-md">
+                                    Accede de forma rápida y segura a tus recibos de pago,
+                                    reportes, consultas y toda tu información laboral en un solo
+                                    lugar.
+                                </p>
+
+                                <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-red-50 border border-red-100">
+                                    <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                                    <span className="text-xs font-semibold text-gray-700">
+                                        Sistema operativo y seguro
+                                    </span>
+                                </div>
+                            </div>
+
+                            {/* Recursos */}
+                            <div className="lg:col-span-2">
+                                <h3 className="text-sm font-bold uppercase tracking-widest text-gray-900 mb-4">
+                                    Recursos
+                                </h3>
+
+                                <ul className="space-y-3">
+                                    <FooterLink
+                                        icon={BookOpen}
+                                        label="Manual de Usuario"
+                                    />
+                                    <FooterLink
+                                        icon={HelpCircle}
+                                        label="Preguntas Frecuentes"
+                                    />
+                                    <FooterLink
+                                        icon={ShieldCheck}
+                                        label="Política de Privacidad"
+                                    />
+                                </ul>
+                            </div>
+
+                            {/* Soporte */}
+                            <div className="lg:col-span-3">
+                                <h3 className="text-sm font-bold uppercase tracking-widest text-gray-900 mb-4">
+                                    Soporte
+                                </h3>
+
+                                <ul className="space-y-3">
+                                    <FooterLink
+                                        icon={LifeBuoy}
+                                        label="Centro de Ayuda"
+                                    />
+                                    <FooterLink
+                                        icon={FileText}
+                                        label="Contacto de Soporte"
+                                    />
+                                    <FooterLink
+                                        icon={RefreshCcw}
+                                        label="Actualizar Información"
+                                    />
+                                </ul>
+                            </div>
+
+                            {/* Contacto */}
+                            <div className="lg:col-span-3">
+                                <h3 className="text-sm font-bold uppercase tracking-widest text-gray-900 mb-4">
+                                    Contacto
+                                </h3>
+
+                                <div className="space-y-4">
+                                    <ContactItem
+                                        icon={Mail}
+                                        label="Correo"
+                                        value="soporteithon@finotex.com"
+                                    />
+
+                                    <ContactItem
+                                        icon={Phone}
+                                        label="Teléfono"
+                                        value="+504 9510-4400"
+                                    />
+                                </div>
+                            </div>
                         </div>
-
-                        <p className="mt-4 text-sm text-gray-600">
-                            Accede de forma rápida y segura a tus recibos de pago, reportes y datos laborales.
-                        </p>
                     </div>
 
-                    {/* COLUMNAS */}
-                    <div className="flex flex-wrap grow mt-10 -mb-10 text-center md:pl-20 md:mt-0 md:text-left">
+                    <Separator />
 
-                        <div className="w-full px-4 md:w-1/2 lg:w-1/4">
-                            <h2 className="mb-4 text-sm font-bold uppercase">Recursos</h2>
-                            <ul>
-                                <li className="mt-3">Manual de Usuario</li>
-                                <li className="mt-3">Preguntas Frecuentes</li>
-                                <li className="mt-3">Política de Privacidad</li>
-                            </ul>
+                    {/* Copyright */}
+                    <div className="bg-linear-to-b from-red-900 via-red-800 to-red-900 px-8 py-5">
+                        <div className="relative flex items-center justify-center">
+                            {/* Texto centrado */}
+                            <p className="text-sm text-red-100 text-center">
+                                © 2026 FINOTEX. Todos los derechos reservados.
+                            </p>
+
+                            {/* Versión alineada al extremo derecho */}
+                            <p className="absolute right-0 text-xs uppercase tracking-widest text-red-200/80 font-semibold">
+                                Versión 2.0
+                            </p>
                         </div>
-
-                        <div className="w-full px-4 md:w-1/2 lg:w-1/4">
-                            <h2 className="mb-4 text-sm font-bold uppercase">Soporte</h2>
-                            <ul>
-                                <li className="mt-3">Contacto de Soporte</li>
-                                <li className="mt-3">Centro de Ayuda</li>
-                                <li className="mt-3">Actualizar Información</li>
-                            </ul>
-                        </div>
-
-                        <div className="w-full px-4 md:w-1/2 lg:w-1/3">
-                            <h2 className="mb-4 text-sm font-bold uppercase">Contacto</h2>
-                            <ul>
-                                <li className="mt-3">IT-support</li>
-                                <li className="mt-3 font-semibold text-red-800">
-                                    soporteithon@finotex.com
-                                </li>
-                                <li className="mt-3 font-semibold text-red-800">
-                                    Tel: +504 9510-4400
-                                </li>
-                            </ul>
-                        </div>
-
                     </div>
-                </div>
-
-                {/* COPYRIGHT */}
-                <div className="bg-red-900">
-                    <div className="container px-5 py-4 mx-auto text-center">
-                        <p className="text-sm text-white">
-                            Copyright © 2026 - FINOTEX Todos los derechos reservados
-                        </p>
-                    </div>
-                </div>
-            </footer>
-        </div >
-
+                </CardContent>
+            </Card>
+        </footer>
     );
 };
 
+interface FooterLinkProps {
+    icon: React.ElementType;
+    label: string;
+}
 
+const FooterLink = ({ icon: Icon, label }: FooterLinkProps) => (
+    <li>
+        <button
+            className="group flex items-center gap-3 text-sm text-gray-600 hover:text-red-700 transition-colors"
+            type="button"
+        >
+            <div className="w-8 h-8 rounded-lg bg-gray-50 border border-gray-100 flex items-center justify-center group-hover:bg-red-50 group-hover:border-red-100 transition-colors">
+                <Icon className="w-4 h-4" />
+            </div>
+            <span className="font-medium">{label}</span>
+        </button>
+    </li>
+);
 
+interface ContactItemProps {
+    icon: React.ElementType;
+    label: string;
+    value: string;
+}
 
+const ContactItem = ({ icon: Icon, label, value }: ContactItemProps) => (
+    <div className="flex items-start gap-3">
+        <div className="w-9 h-9 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center shrink-0">
+            <Icon className="w-4 h-4 text-red-700" />
+        </div>
 
-
-
+        <div>
+            <p className="text-xs font-bold uppercase tracking-widest text-gray-400">
+                {label}
+            </p>
+            <p className="text-sm font-semibold text-gray-700 break-all">
+                {value}
+            </p>
+        </div>
+    </div>
+);
