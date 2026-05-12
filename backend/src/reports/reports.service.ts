@@ -149,7 +149,7 @@ export class ReportsService {
         doc
           .font('Helvetica')
           .text(
-            `, labora en nuestra institución desempeñando el cargo de ${data.puesto || 'Colaborador'
+            `, labora en nuestra empresa desempeñando el cargo de ${data.puesto || 'Colaborador'
             }, desde el ${hireDateString} hasta la fecha actual.`,
             {
               align: 'justify',
@@ -209,7 +209,7 @@ export class ReportsService {
             align: 'left',
           })
           .fontSize(10)
-          .text('Gerencia de Recursos Humanos', {
+          .text('Gerente de recursos humanos', {
             width: firmaWidth,
             align: 'left',
           });

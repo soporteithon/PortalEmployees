@@ -7,7 +7,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { CustomFullScreenLoading } from "./components/custom/CustomFullScreen";
 import { useAuthStore } from "@/auth/store/auth.store";
 
-
+import { IdleTimer } from "./components/auth/IdleTimer";
 
 
 const queryClient = new QueryClient();
@@ -44,6 +44,7 @@ export const PagoVaucher = () => {
 
         // Provider de react query para manejar el estado de las consultas, para mejorar la experiencia del usuario
         <QueryClientProvider client={queryClient}>
+            <IdleTimer />
             <Toaster />
             <ChekAuthProvider>
                 <RouterProvider router={appRouter} />

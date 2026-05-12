@@ -47,13 +47,13 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
     login: async (email: string, password: string) => {
         try {
             const data = await loginAction(email, password);
-            localStorage.setItem("token", data.token);
+            sessionStorage.setItem("token", data.token);
 
             set({ User: data.user, token: data.token, authStatus: 'authenticated' });
             return true;
 
         } catch (error) {
-            localStorage.removeItem("token");
+            sessionStorage.removeItem("token");
             set({ User: null, token: null, authStatus: 'not-authenticated' });
             return false;
         }
@@ -62,7 +62,7 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
 
     },
     logout: () => {
-        localStorage.removeItem("token");
+        sessionStorage.removeItem("token");
         set({ User: null, token: null, authStatus: 'not-authenticated' });
     },
 

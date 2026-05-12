@@ -9,19 +9,19 @@ export const checkAuthAction = async (): Promise<AuthResponse> => {
 
 
 
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
 
     if (!token) throw new Error('No token');
 
     try {
         const { data } = await vaucherApi.get<AuthResponse>('/auth/check-status');
 
-        localStorage.setItem('token', data.token);
+        sessionStorage.setItem('token', data.token);
 
         return data;
 
     } catch (error) {
-        localStorage.removeItem('token');
+        sessionStorage.removeItem('token');
         throw new Error('Token expired');
     }
 }

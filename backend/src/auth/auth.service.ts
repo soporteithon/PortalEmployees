@@ -252,11 +252,27 @@ export class AuthService {
   }
 
   private handleDBErrors(error: any): never {
-    if (error.number === 2627 || error.number === 2601)
+    console.log('--- ENTRANDO A handleDBErrors ---');
+
+    // Extraemos el número de error de varias posibles ubicaciones (TypeORM/MSSQL)
+    const errorCode = error.number || error.driverError?.number || error.originalError?.number;
+    const errorMessage = error.message || error.driverError?.message || '';
+
+    console.log('Código detectado:', errorCode);
+    console.log('Mensaje detectado:', errorMessage);
+
+    if (errorCode == 2627 || errorCode == 2601)
       throw new BadRequestException('Ya existe un registro con esos datos (Duplicado)');
 
-    console.log(error)
+    if (errorCode == 547 || errorMessage.includes('FOREIGN KEY')) {
+      // Conflicto de llave foránea - Generalmente significa que el codEmpleado no existe
+      throw new BadRequestException('El código de empleado no existe en el sistema de Recursos Humanos');
+    }
 
-    throw new InternalServerErrorException('Please check server logs');
+    console.log('--- Error de Base de Datos No Controlado ---');
+    console.log(error);
+    console.log('-------------------------------------------');
+
+    throw new InternalServerErrorException('Error en el servidor, por favor contacte al administrador');
   }
 }
